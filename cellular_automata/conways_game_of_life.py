@@ -30,8 +30,7 @@ def new_generation(cells: list[list[int]]) -> list[list[int]]:
                 cells[x][y] for x in range(i - 1, i + 2) for y in range(j - 1, j + 2)
                 if 0 <= x < len(cells) and 0 <= y < len(row) and (x != i or y != j)
             )
-            next_gen[i][j] = 1 if cell == 1 and 2 <= neighbours <= 3 or cell == 0 \
-                and neighbours == 3 else 0
+            next_gen[i][j] = 1 if cell == 1 and 2 <= neighbours <= 3 or cell == 0 and neighbours == 3 else 0
     return next_gen
 
 def generate_images(cells: list[list[int]], frames: int) -> list[Image.Image]:
