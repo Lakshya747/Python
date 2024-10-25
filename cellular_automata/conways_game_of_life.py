@@ -1,10 +1,12 @@
 """Conway's Game of Life implemented in Python.
 https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"""
 
+# Import block
 from __future__ import annotations
 
 from PIL import Image
 
+# Constants
 GLIDER = [
     [0, 1, 0, 0, 0, 0, 0, 0],
     [0, 0, 1, 0, 0, 0, 0, 0],
@@ -22,6 +24,7 @@ BLINKER = [
     [0, 1, 0]
 ]
 
+# Functions
 def new_generation(cells: list[list[int]]) -> list[list[int]]:
     """Generates the next generation for a given state of Conway's Game of Life."""
     next_gen = [[0] * len(row) for row in cells]
@@ -31,7 +34,8 @@ def new_generation(cells: list[list[int]]) -> list[list[int]]:
                 cells[x][y] for x in range(i - 1, i + 2) for y in range(j - 1, j + 2)
                 if 0 <= x < len(cells) and 0 <= y < len(row) and (x != i or y != j)
             )
-            next_gen[i][j] = 1 if cell == 1 and 2 <= neighbours <= 3 or cell == 0 and neighbours == 3 else 0
+            next_gen[i][j] = 1 if cell == 1 and 2 <= neighbours <= 3 or cell == 0 \
+                and neighbours == 3 else 0
     return next_gen
 
 def generate_images(cells: list[list[int]], frames: int) -> list[Image.Image]:
