@@ -1,7 +1,7 @@
 from __future__ import annotations
 import matplotlib.pyplot as plt
 import numpy as np
-class FuzzySet:
+
     """
     A class for representing and manipulating triangular fuzzy sets.
     """
