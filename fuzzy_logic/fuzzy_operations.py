@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from dataclasses import dataclass
 import matplotlib.pyplot as plt
 import numpy as np
@@ -39,7 +40,10 @@ class FuzzySet:
             return (x - self.left_boundary) / (self.peak - self.left_boundary)
         elif self.peak < x < self.right_boundary:
             return (self.right_boundary - x) / (self.right_boundary - self.peak)
-        raise ValueError(f"Invalid value {x} for fuzzy set {self}")
+        
+        # Assign the message to a variable before raising the exception
+        msg = f"Invalid value {x} for fuzzy set {self}"
+        raise ValueError(msg)
 
     def union(self, other: FuzzySet) -> FuzzySet:
         return FuzzySet(
