@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+
 import matplotlib.pyplot as plt
+
 import numpy as np
 
 @dataclass
@@ -41,7 +43,6 @@ class FuzzySet:
         elif self.peak < x < self.right_boundary:
             return (self.right_boundary - x) / (self.right_boundary - self.peak)
         
-        # Assign the message to a variable before raising the exception
         msg = f"Invalid value {x} for fuzzy set {self}"
         raise ValueError(msg)
 
