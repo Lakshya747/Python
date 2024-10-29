@@ -4,7 +4,6 @@ from dataclasses import dataclass
 
 import matplotlib.pyplot as plt
 import numpy as np
-
 @dataclass
 class FuzzySet:
     """
@@ -16,7 +15,7 @@ class FuzzySet:
     right_boundary: float
 
     def __str__(self) -> str:
-        return f"{self.name}: [{self.left_boundary}, {self.peak}, {self.right_boundary}]"
+        return f"{self.name}:[{self.left_boundary}, {self.peak}, {self.right_boundary}]"
 
     def complement(self) -> FuzzySet:
         return FuzzySet(
@@ -40,8 +39,7 @@ class FuzzySet:
         elif self.left_boundary < x <= self.peak:
             return (x - self.left_boundary) / (self.peak - self.left_boundary)
         elif self.peak < x < self.right_boundary:
-            return (self.right_boundary - x) / (self.right_boundary - self.peak)
-        
+            return (self.right_boundary - x) / (self.right_boundary - self.peak) 
         msg = f"Invalid value {x} for fuzzy set {self}"
         raise ValueError(msg)
 
